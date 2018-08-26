@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "linnaeus"
-  s.version = "1.4.0"
+  s.version = File.open('VERSION') { |f| f.readline.chomp }
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -51,7 +51,7 @@ Gem::Specification.new do |s|
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new(s.version) then
       s.add_runtime_dependency(%q<redis>, ["~> 4.0"])
       s.add_runtime_dependency(%q<stemmer>, ["~> 1.0.0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.11.0"])
@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<redcarpet>, [">= 0"])
     else
-      s.add_dependency(%q<redis>, ["~> 3.0"])
+      s.add_dependency(%q<redis>, ["~> 4.0"])
       s.add_dependency(%q<stemmer>, ["~> 1.0.0"])
       s.add_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_dependency(%q<yard>, ["~> 0.7"])
